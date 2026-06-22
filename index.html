@@ -1,4 +1,28 @@
-helo world 
-<br> 
-nekooo
-<p>this is a new feature :></p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App (No API Key)</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input { padding: 10px; margin: 10px; }
+        button { padding: 10px; }
+        .weather-box { margin-top: 20px; padding: 20px; border: 1px solid #ccc; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather %}
+    <div class="weather-box">
+        <h2>{{ weather['nearest_area'][0]['areaName'][0]['value'] }}</h2>
+        <p>🌡️ Temperature: {{ weather['current_condition'][0]['temp_C'] }} °C</p>
+        <p>💨 Wind Speed: {{ weather['current_condition'][0]['windspeedKmph'] }} km/h</p>
+        <p>☁️ Condition: {{ weather['current_condition'][0]['weatherDesc'][0]['value'] }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
